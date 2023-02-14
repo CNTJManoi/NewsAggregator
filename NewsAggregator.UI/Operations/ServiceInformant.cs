@@ -24,6 +24,11 @@ namespace NewsAggregator.UI.Operations
             Print("Введен номер некоректной опции!");
             Print("Попробуйте еще раз...");
         }
+        public void PrintOutOfRangeError()
+        {
+            Print("Вы выбрали несуществующий пункт меню!");
+            Print("Попробуйте еще раз...");
+        }
         public void PrintErrorNullInput()
         {
             Print("Вы не ввели необходимую опцию!");

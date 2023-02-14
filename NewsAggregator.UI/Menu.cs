@@ -48,10 +48,6 @@ namespace NewsAggregator.UI
             {
                 switch (_chooseOption)
                 {
-                //     Print("1) Вывод новостей политики без шапки автора");
-                //Print("2) Вывод новостей спорта без шапки автора");
-                //Print("3) Вывод новостей политики с шапкой автора");
-                //Print("4) Вывод новостей спорта с шапкой автора");
                     case 1:
                         Display.PrintNews(NewsRepository.GetPoliticsWithoutHeader());
                         break;
@@ -67,8 +63,13 @@ namespace NewsAggregator.UI
                     case 0:
                         Exit();
                         break;
+                    default:
+                        ServiceInformant.PrintOutOfRangeError();
+                        break;
                 }
+                return;
             }
+            ServiceInformant.PrintOutOfRangeError();
         }
         private int CheckInput()
         {
