@@ -1,12 +1,10 @@
-﻿
-namespace NewsAggregator.UI
+﻿namespace NewsAggregator.UI;
+
+internal class Program
 {
-    internal class Program
+    private static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            Menu m = new Menu();
-            m.Start();
-        }
+        var m = new Menu();
+        m.Start();
     }
 }

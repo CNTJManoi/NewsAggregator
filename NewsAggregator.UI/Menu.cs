@@ -1,100 +1,112 @@
 ﻿using NewsAggregator.UI.Operations;
 
-namespace NewsAggregator.UI
+namespace NewsAggregator.UI;
+
+public class Menu
 {
-    public class Menu
+    private int _chooseOption;
+
+    public Menu()
     {
-        NewsDisplayer Display { get; }
-        ServiceInformant ServiceInformant { get; }
-        NewsRepository NewsRepository { get; }
-        int _chooseOption;
-        public Menu()
+        Display = new NewsDisplayer();
+        ServiceInformant = new ServiceInformant();
+        NewsRepository = new NewsRepository();
+        _chooseOption = -1;
+    }
+
+    private NewsDisplayer Display { get; }
+    private ServiceInformant ServiceInformant { get; }
+    private NewsRepository NewsRepository { get; }
+
+    public void Start()
+    {
+        Loop();
+    }
+
+    private void Loop()
+    {
+        while (_chooseOption != 0)
         {
-            Display = new NewsDisplayer();
-            ServiceInformant = new ServiceInformant();
-            NewsRepository = new NewsRepository();
-            _chooseOption = -1;
+            PrintMainMenu();
+            ChooseOption();
+            ExpectPressed();
+            ClearScreen();
         }
-        public void Start()
+    }
+
+    private void PrintMainMenu()
+    {
+        ServiceInformant.TitleMenu();
+        ServiceInformant.PrintOptions();
+    }
+
+    private void ClearScreen()
+    {
+        Console.Clear();
+    }
+
+    private void ExpectPressed()
+    {
+        Console.ReadKey();
+    }
+
+    private void ChooseOption()
+    {
+        if ((_chooseOption = CheckInput()) != -1)
         {
-            Loop();
-        }
-        private void Loop()
-        {
-            while(_chooseOption != 0)
+            switch (_chooseOption)
             {
-                PrintMainMenu();
-                ChooseOption();
-                ExpectPressed();
-                ClearScreen();
+                case 1:
+                    Display.PrintNews(NewsRepository.GetPoliticsWithoutHeader());
+                    break;
+                case 2:
+                    Display.PrintNews(NewsRepository.GetSportsNewsWithoutHeader());
+                    break;
+                case 3:
+                    Display.PrintNews(NewsRepository.GetPoliticsNewsWithHeader());
+                    break;
+                case 4:
+                    Display.PrintNews(NewsRepository.GetSportsNewsWithHeader());
+                    break;
+                case 0:
+                    Exit();
+                    break;
+                default:
+                    ServiceInformant.PrintOutOfRangeError();
+                    break;
             }
+
+            return;
         }
-        private void PrintMainMenu()
+
+        ServiceInformant.PrintOutOfRangeError();
+    }
+
+    private int CheckInput()
+    {
+        var input = -1;
+        try
         {
-            ServiceInformant.TitleMenu();
-            ServiceInformant.PrintOptions();
+            input = int.Parse(Console.ReadLine());
         }
-        private void ClearScreen()
+        catch (FormatException exception)
         {
-            Console.Clear();
+            ServiceInformant.PrintErrorInput();
         }
-        private void ExpectPressed()
+        catch (ArgumentNullException exception)
         {
-            Console.ReadKey();
+            ServiceInformant.PrintErrorNullInput();
         }
-        private void ChooseOption()
+        catch (Exception exception)
         {
-            if((_chooseOption = CheckInput()) != -1)
-            {
-                switch (_chooseOption)
-                {
-                    case 1:
-                        Display.PrintNews(NewsRepository.GetPoliticsWithoutHeader());
-                        break;
-                    case 2:
-                        Display.PrintNews(NewsRepository.GetSportsNewsWithoutHeader());
-                        break;
-                    case 3:
-                        Display.PrintNews(NewsRepository.GetPoliticsNewsWithHeader());
-                        break;
-                    case 4:
-                        Display.PrintNews(NewsRepository.GetSportsNewsWithHeader());
-                        break;
-                    case 0:
-                        Exit();
-                        break;
-                    default:
-                        ServiceInformant.PrintOutOfRangeError();
-                        break;
-                }
-                return;
-            }
-            ServiceInformant.PrintOutOfRangeError();
+            ServiceInformant.PrintUnknownError(exception);
         }
-        private int CheckInput()
-        {
-            int input = -1;
-            try
-            {
-                input = int.Parse(Console.ReadLine());
-            }
-            catch (FormatException exception)
-            {
-                ServiceInformant.PrintErrorInput();
-            }
-            catch(ArgumentNullException exception)
-            {
-                ServiceInformant.PrintErrorNullInput();
-            }
-            catch (Exception exception)
-            {
-                ServiceInformant.PrintUnknownError(exception);
-            }
-            return input;
-        }
-        private void Exit()
-        {
-            Environment.Exit(0);
-        }
+
+        return input;
+    }
+
+    private void Exit()
+    {
+        Environment.Exit(0);
     }
 }

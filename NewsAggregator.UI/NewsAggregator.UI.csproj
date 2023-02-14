@@ -1,15 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-    <OutputType>Exe</OutputType>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<OutputType>Exe</OutputType>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\NewsAggregator.Generator\NewsAggregator.Generator.csproj" />
-    <ProjectReference Include="..\NewsAggregator\NewsAggregator.Logic.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\NewsAggregator.Generator\NewsAggregator.Generator.csproj" />
+		<ProjectReference Include="..\NewsAggregator\NewsAggregator.Logic.csproj" />
+	</ItemGroup>
 
 </Project>
