@@ -1,8 +1,5 @@
-﻿using NewsAggregator.Models;
-using NewsAggregator.UI;
-using System;
-
-namespace NewsAggregator 
+﻿
+namespace NewsAggregator.UI
 {
     internal class Program
     {

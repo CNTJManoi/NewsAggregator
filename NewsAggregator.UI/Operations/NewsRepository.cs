@@ -1,12 +1,7 @@
 ﻿using NewsAggregator.Generator.Types;
-using NewsAggregator.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using NewsAggregator.Logic.Models;
 
-namespace NewsAggregator.UI
+namespace NewsAggregator.UI.Operations
 {
     internal class NewsRepository
     {

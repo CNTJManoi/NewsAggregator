@@ -1,10 +1,4 @@
-﻿using NewsAggregator.Header;
-using NewsAggregator.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using NewsAggregator.UI.Operations;
 
 namespace NewsAggregator.UI
 {

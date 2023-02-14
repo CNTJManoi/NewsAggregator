@@ -1,10 +1,5 @@
-﻿using NewsAggregator.Header;
-using NewsAggregator.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using NewsAggregator.Logic.Header;
+using NewsAggregator.Logic.Models;
 
 namespace NewsAggregator.Generator.Types
 {

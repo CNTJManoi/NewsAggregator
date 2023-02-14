@@ -1,11 +1,6 @@
-﻿using NewsAggregator.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using NewsAggregator.Logic.Models;
 
-namespace NewsAggregator.UI
+namespace NewsAggregator.UI.Operations
 {
     //класс вывода на экран различных новостей
     internal class NewsDisplayer
