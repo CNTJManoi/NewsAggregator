@@ -1,4 +1,6 @@
-﻿using NewsAggregator.UI.Operations;
+﻿using NewsAggregator.Generator;
+using NewsAggregator.Generator.Types;
+using NewsAggregator.UI.Operations;
 
 namespace NewsAggregator.UI;
 
@@ -10,13 +12,12 @@ public class Menu
     {
         Display = new NewsDisplayer();
         ServiceInformant = new ServiceInformant();
-        NewsRepository = new NewsRepository();
         _chooseOption = -1;
     }
 
     private NewsDisplayer Display { get; }
     private ServiceInformant ServiceInformant { get; }
-    private NewsRepository NewsRepository { get; }
+    private NewsGenerator NewsRepository { get; set; }
 
     public void Start()
     {
@@ -57,16 +58,20 @@ public class Menu
             switch (_chooseOption)
             {
                 case 1:
-                    Display.PrintNews(NewsRepository.GetPoliticsWithoutHeader());
+                    NewsRepository = new PoliticsNewsGenerator();
+                    Display.PrintNews(NewsRepository.GenerateNewsWithoutHeader());
                     break;
                 case 2:
-                    Display.PrintNews(NewsRepository.GetSportsNewsWithoutHeader());
+                    NewsRepository = new SportsNewsGenerator();
+                    Display.PrintNews(NewsRepository.GenerateNewsWithoutHeader());
                     break;
                 case 3:
-                    Display.PrintNews(NewsRepository.GetPoliticsNewsWithHeader());
+                    NewsRepository = new PoliticsNewsGenerator();
+                    Display.PrintNews(NewsRepository.GenerateNewsWithHeader());
                     break;
                 case 4:
-                    Display.PrintNews(NewsRepository.GetSportsNewsWithHeader());
+                    NewsRepository = new SportsNewsGenerator();
+                    Display.PrintNews(NewsRepository.GenerateNewsWithHeader());
                     break;
                 case 0:
                     Exit();

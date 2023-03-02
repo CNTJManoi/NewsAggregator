@@ -16,7 +16,7 @@ public class PoliticsNewsGenerator : NewsGenerator
 
     public override News GenerateNewsWithoutHeader()
     {
-        return new LocalNews(
+        return new News(
             "Сын Никаса Сафронова застрял в унитазе на борту самолета и попал на видео",
             "Я не умру в туалете",
             "У нас есть свежие новости для вас"

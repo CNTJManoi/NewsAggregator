@@ -1,14 +1,15 @@
 ﻿namespace NewsAggregator.Logic.Models;
 
-public abstract class News
+public class News
 {
-    protected News(string content, string footer)
+    public News(string title, string content, string footer)
     {
+        Title = title;
         Content = content;
         Footer = footer;
     }
 
-    public abstract string Title { get; }
+    public virtual string Title { get; }
     public string Content { get; }
     public string Footer { get; }
 }

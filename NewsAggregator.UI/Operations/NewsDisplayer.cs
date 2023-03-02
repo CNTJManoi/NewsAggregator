@@ -7,8 +7,12 @@ internal class NewsDisplayer
 {
     public void PrintNews(News news)
     {
-        Console.WriteLine(news.Title);
-        Console.WriteLine(news.Content);
-        Console.WriteLine(news.Footer);
+        Print(news.Title);
+        Print(news.Content);
+        Print(news.Footer);
+    }
+    private void Print(string str)
+    {
+        Console.WriteLine(str);
     }
 }
